@@ -6365,14 +6365,22 @@ a { position: relative; z-index: 20; }
 .right { text-align: right; }
 .walletarea { display: none; border: 2px solid #009900; }
 hr { margin: 20px 0; border-top: 2px dashed #008000; }
-.keyarea { height: 110px; text-align: left; position: relative; padding: 5px; }
+.keyarea { height: 221px; text-align: left; position: relative; padding: 5px; }
 .keyarea .public { float: left; }
 .keyarea .pubaddress { display: inline-block; height: 40px; padding: 0 0 0 10px; float: left; }
-.keyarea .privwif { margin: 0;  float: right; text-align: right; padding: 0 20px 0 0; position: relative; }
+.keyarea .privwif { margin: 0;  float: right; text-align: right; padding: 100px 20px 0px 0; position: relative; }
 .keyarea .label { font-weight: bold; }
 .keyarea .output { display: block; font-family: monospace; font-size: 1.25em; }
 .keyarea .qrcode_public { display: inline-block; float: left; }
-.keyarea .qrcode_private { display: inline-block; position: relative; top: 28px; float: right; }
+.keyarea .qrcode_private { display: inline-block; position: relative; top: 130px; float: right; }
+.keyarea .christmas {
+		height: 150px;
+		width:150px;
+		position:absolute;
+		left:0px;
+		top:70px;
+		
+	}
 .pubkeyhex { word-wrap: break-word; }
 body { font-family: Arial; }
 body, html { height: 99%; }
@@ -6686,7 +6694,7 @@ input[type=checkbox] { position: relative; z-index: 20; }
 			<div id="paperarea">
 				<div class="commands">
 					<div id="papercommands" class="row">
-						<span><label id="paperlabelhideart" for="paperart">Hide Art?</label> <input type="checkbox" id="paperart" onchange="ninja.wallets.paperwallet.toggleArt(this);" /></span>
+						<span><label id="paperlabelhideart" for="paperart">Christmas edition</label> <input type="checkbox" id="paperart" onchange="ninja.wallets.paperwallet.toggleArt(this);" /></span>
 						<span><label id="paperlabeladdressestogenerate" for="paperlimit">Addresses to generate:</label> <input type="text" id="paperlimit" /></span>
 						<span><input type="button" id="papergenerate" value="Generate" onclick="ninja.wallets.paperwallet.build(document.getElementById('paperlimit').value * 1, document.getElementById('paperlimitperpage').value * 1, !document.getElementById('paperart').checked, document.getElementById('paperpassphrase').value);" /></span>
 						<span class="print"><input type="button" name="print" value="Print" id="paperprint" onclick="window.print();" /></span>
@@ -9808,7 +9816,7 @@ ninja.wallets.paperwallet = {
 
 	remaining: null, // use to keep track of how many addresses are left to process when building the paper wallet
 	count: 0,
-	pageBreakAtDefault: 7,
+	pageBreakAtDefault: 3,
 	pageBreakAtArtisticDefault: 3,
 	useArtisticWallet: true,
 	pageBreakAt: null,
@@ -9916,6 +9924,7 @@ ninja.wallets.paperwallet = {
 									"<span class='output' id='btcaddress" + i + "'></span>" +
 								"</div>" +
 							"</div>" +
+							"<img src='./src/crypto-santa.png' class='christmas'>" +
 							"<div class='private'>" +
 								"<div id='qrcode_private" + i + "' class='qrcode_private'></div>" +
 								"<div class='privwif'>" +
